@@ -40,7 +40,6 @@ int main(void)
   
     // enable compare interrupt
     TIMSK1 |= (1 << OCIE1A);
-	//sei();						// enable global interrupts
 	
 	
 	

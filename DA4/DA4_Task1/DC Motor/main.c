@@ -52,10 +52,8 @@ int main(void){
 	while (1){
 				ADCSRA |= (1 << ADSC);			// start conversion
 		 		while((ADCSRA&(1<<ADIF))==0);	// wait for conversion to finish
-		 		adcVal = ADCH;			// extract right 10-bits of ADC register
-		//
-		// 		/* PWM duty cycle determined by ADC red, control speed of DC motor */
-		// 		// move motor forward
+		 		adcVal = ADCH;			// extract right 8-bits of ADC register
+	
 		if(pressed) {
 		OCR1A = 257*adcVal;	// OCR1A value for duty cycle
 		}
