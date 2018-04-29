@@ -38,8 +38,7 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../nrf24.c \
-../xprintf.c
+../nrf24l01.c
 
 
 PREPROCESSING_SRCS += 
@@ -50,23 +49,19 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-nrf24.o \
-xprintf.o
+nrf24l01.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-nrf24.o \
-xprintf.o
+nrf24l01.o
 
 C_DEPS +=  \
 main.d \
-nrf24.d \
-xprintf.d
+nrf24l01.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-nrf24.d \
-xprintf.d
+nrf24l01.d
 
 OUTPUT_FILE_PATH +=Midterm2_Transmit.elf
 
@@ -82,8 +77,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
 
 
 
@@ -121,7 +114,7 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Midterm2_Transmit.map" -Wl,--start-group -Wl,-lm -Wl,-lnrf24.h -Wl,-lnRF24L01.h  -Wl,--end-group -Wl,-L"C:\Users\trace\OneDrive\Documents\GitHub\epc103gnirps8102vlnu\Midterm_2\Midterm2_Transmit"  -Wl,--gc-sections -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega328p"  
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Midterm2_Transmit.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,-L"C:\Users\trace\OneDrive\Documents\GitHub\epc103gnirps8102vlnu\Midterm_2\Midterm2_Transmit" -Wl,-L"C:\Users\trace\OneDrive\DOCUME~1\GitHub\EPC103~1\MIDTER~1\MIDTER~1\MIDTER~1"  -Wl,--gc-sections -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega328p"  
 	@echo Finished building target: $@
 	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "Midterm2_Transmit.elf" "Midterm2_Transmit.hex"
 	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Midterm2_Transmit.elf" "Midterm2_Transmit.eep" || exit 0
