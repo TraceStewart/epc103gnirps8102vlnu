@@ -1,0 +1,3 @@
+https://youtu.be/QE9WRfPTeTI - Video showing two MPU6050’s printing data to terminal
+https://youtu.be/5suAdDACHiA - Video showing third MPU6050 printing data to terminal sent from another transmitter
+https://www.youtube.com/watch?v=unVZ6j_c98g&t=9s – PowerPoint Presentation

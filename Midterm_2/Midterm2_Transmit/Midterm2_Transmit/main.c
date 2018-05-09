@@ -16,7 +16,7 @@
 #define F_CPU 1000000UL
 
 #define FOSC 16000000
-#define BAUD  9600
+#define BAUD  19200
 #define MYUBRR FOSC/16/BAUD-1
 
 
